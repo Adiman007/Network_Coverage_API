@@ -1,0 +1,20 @@
+for the same coords (49.897442, 2.290084), I tried using 2 formulas to calculate the distance and here are the results :
+
+USING Haversine Formula to calculate distance :
+
+{               0     Operateur    x         y       2G  3G  4G   long        lat       Nom_Operateur    distance  
+ 29896       29896      20820  648675.0  6977719.0   1   1   1  2.286243   49.896089  Bouygues Telecoms  0.314375  
+ 29892       29892      20810  648669.0  6977700.0   0   1   1  2.286162   49.895918                SFR  0.328897  
+ 29753       29753      20815  648477.0  6977711.0   0   1   1  2.283490   49.896001               Free  0.500141 
+ 30145       30145      20820  649106.0  6977352.0   1   1   1  2.292282   49.892827  Bouygues Telecoms  0.537062 
+ 30138       30138      20801  649098.0  6977342.0   1   1   1  2.292172   49.892736             Orange  0.544458  
+}
+
+USING Distance Formula to calculate distance :
+ {              0    Operateur    x          y      2G  3G  4G     long       lat        Nom_Operateur    distance  
+ 29896       29896      20820  648675.0  6977719.0   1   1   1  2.286243    49.896089  Bouygues Telecoms  0.004073 
+ 29892       29892      20810  648669.0  6977700.0   0   1   1  2.286162    49.895918                SFR  0.004208 
+ 30145       30145      20820  649106.0  6977352.0   1   1   1  2.292282    49.892827  Bouygues Telecoms  0.005112  
+ 30138       30138      20801  649098.0  6977342.0   1   1   1  2.292172    49.892736             Orange  0.005148 
+ 30132       30132      20810  649097.0  6977335.0   1   1   1  2.292159    49.892673                SFR  0.005200  
+}
