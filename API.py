@@ -5,17 +5,20 @@ from geopy.distance import geodesic
 
 app = FastAPI()
 
+range_4g = 1.5 # in km
+range = 0.008 # in degrees
+
 # get the closest locations to a given coordinate using the distance formula
 def closest_locations_distance_formula(coord, data):
     data['distance'] = ((data['lat'] - coord[0])**2 + (data['long'] - coord[1])**2)**0.5
-    closest_locations = data[data['distance'] < 0.008]
+    closest_locations = data[data['distance'] < range]
     closest_locations = closest_locations.sort_values(by='distance', ascending=True)
     return closest_locations
 
 # get the closest locations to a given coordinate using the Haversine formula
 def closest_locations_geodesic(coord, data):
     data['distance'] = data.apply(lambda x: geodesic((x['lat'], x['long']), coord).kilometers, axis = 1)
-    closest_locations = data[data['distance'] < 1.5]
+    closest_locations = data[data['distance'] < range_4g]
     closest_locations = closest_locations.sort_values(by='distance', ascending=True)
     return closest_locations
 
