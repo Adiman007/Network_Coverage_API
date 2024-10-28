@@ -1,0 +1,6 @@
+#list of the required libraries
+fastapi
+pyproj
+pandas
+fastapi[standard]
+geopy
