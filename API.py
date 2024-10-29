@@ -24,6 +24,8 @@ def closest_locations_geodesic(coord, data):
 
 # get the coordinates of an address using the api-adresse.data.gouv.fr API
 def address_to_coordinates(q):
+    if not q:
+        return None
     response = requests.get(f'https://api-adresse.data.gouv.fr/search/?q={q}')
     if response.status_code == 200:
         data = response.json()
@@ -45,7 +47,11 @@ def read_root():
 @app.get("/network/geodesic/{q}")
 def read_test(q: str):
     coord = address_to_coordinates(q)
+    if coord is None:
+        return {"error": "Invalid address"}
     data = import_data('clear_data.csv')
+    if data is None:
+        return {"error": "Data not found"}
     locs = closest_locations_geodesic(coord, data)
     networks = {}
     for index, row in locs.iterrows():
@@ -70,7 +76,11 @@ def read_test(q: str):
 def read_test(q: str):
 
     coord = address_to_coordinates(q)
+    if coord is None:
+        return {"error": "Invalid address"}
     data = import_data('clear_data.csv')
+    if data is None:
+        return {"error": "Data not found"}
     locs = closest_locations_distance_formula(coord, data)
     networks = {}
     for index, row in locs.iterrows():
@@ -93,7 +103,11 @@ def read_test(q: str):
 @app.get("/network/{q}")
 def read_test(q: str):
     coord = address_to_coordinates(q)
+    if coord is None:
+        return {"error": "Invalid address"}
     data = import_data('clear_data.csv')
+    if data is None:
+        return {"error": "Data not found"}
     close_locs = closest_locations_distance_formula(coord, data)
     locs = closest_locations_geodesic(coord, close_locs)
     networks = {}

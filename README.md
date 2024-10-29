@@ -2,7 +2,7 @@
 
 * execute `pip install requirements.txt` ( in virtual env is better)
   
-* Use the import_data.py file to add coordinates and Operator_name to the csv file because coordinates calculations can be very slow so we don't want to make them on the API side.
+* Use the import_data.py file to add coordinates and Operator_name to the csv file because coordinates calculations can be very slow so we don't want to make them on the API side at runtime.
   
 *  start the API using the command `fastapi dev API.py `
 
